@@ -1,0 +1,62 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1. Install All Dependencies",
+      "type": "shell",
+      "command": "npm install && cd server && npm install && cd ../client && npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "2. Seed Database",
+      "type": "shell",
+      "command": "cd server && npm run seed",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "3. Start Backend Server",
+      "type": "shell",
+      "command": "cd server && npm run dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "railway-app"
+      }
+    },
+    {
+      "label": "4. Start Frontend Client (Vite)",
+      "type": "shell",
+      "command": "cd client && npm run dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "railway-app"
+      }
+    },
+    {
+      "label": "🚀 Start Full Railway Platform (Server + Client)",
+      "dependsOn": [
+        "3. Start Backend Server",
+        "4. Start Frontend Client (Vite)"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
